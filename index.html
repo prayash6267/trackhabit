@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Habit Tracker</title>
+</head>
+<body>
+  <h1>Habit Tracker</h1>
+
+  <form action="/habits" method="post">
+    <label>
+      Name:
+      <input type="text" name="name" required>
+    </label>
+
+    <br>
+
+    <label>
+      Description:
+      <textarea name="description" required></textarea>
+    </label>
+
+    <br>
+
+    <label>
+      Frequency (times per week):
+      <input type="number" name="frequency" required>
+    </label>
+
+    <br>
+
+    <button type="submit">Add Habit</button>
+  </form>
+
+  <h2>Habits</h2>
+
+  <% if (habits.length > 0) { %>
+    <ul>
+      <% habits.forEach(habit => { %>
+        <li>
+          <strong><%= habit.name %></strong>:
+          <%= habit.description %>
+          (<%= habit.frequency %> times per week)
+          <% if (habit.completed.length > 0) { %>
+            <ul>
+              <% habit
